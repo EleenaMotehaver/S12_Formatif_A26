@@ -7,9 +7,10 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllersWithViews();
 
 builder.Services.AddDbContext<MissionDbContext>(options =>
-options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+options.UseSqlServer(builder.Configuration.GetConnectionString("Mission3Connection")));
 
-
+var connectionString = builder.Configuration.GetConnectionString("Mission3Connection");
+builder.Services.AddDbContext<MissionDbContext>(options => options.UseSqlServer(connectionString));
 
 var app = builder.Build();
 
